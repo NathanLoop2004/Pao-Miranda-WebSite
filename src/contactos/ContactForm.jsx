@@ -13,14 +13,35 @@ export default function ContactForm() {
 
   const formRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = formRef.current;
     const data = new FormData(form);
-    // Aquí puedes enviar `data` a tu backend con fetch o axios
-    // Ejemplo: fetch('/api/contact', { method: 'POST', body: data })
-    for (let [key, value] of data.entries()) {
-      console.log(key, value);
+
+    // Prepara los datos para enviar como JSON
+    const payload = {
+      nombre: data.get('nombre'),
+      email: data.get('email'),
+      mensaje: data.get('mensaje'),
+      tipoConsulta: data.get('tipoConsulta'),
+    };
+
+    try {
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert('¡Mensaje enviado!');
+        form.reset();
+        setTipoConsulta("Selecciona tipo de consulta");
+      } else {
+        alert('Error al enviar el mensaje.');
+      }
+    } catch (err) {
+      alert('Error de red.');
     }
   };
 
@@ -72,6 +93,12 @@ export default function ContactForm() {
             </ul>
           )}
         </div>
+        {/* Campo oculto para tipo de consulta */}
+        <input
+          type="hidden"
+          name="tipoConsulta"
+          value={tipoConsulta}
+        />
         {/* Nombre */}
         <input
           type="text"
