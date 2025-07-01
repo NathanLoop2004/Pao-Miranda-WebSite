@@ -1,0 +1,22 @@
+[
+  {
+    "method": [
+      "GET",
+      "PUT",  
+      "POST"  
+    ],
+    "origin": [
+      "http://localhost:5173", 
+      "https://miranda-286b9.web.app", 
+      "https://miranda-286b9.firebaseapp.com" 
+      
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Disposition",
+      "x-goog-meta-data", 
+      "x-firebase-storage-sent" 
+    ]
+  }
+]
+
