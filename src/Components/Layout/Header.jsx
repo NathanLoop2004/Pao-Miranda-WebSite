@@ -17,7 +17,7 @@ const Header = () => {
             <img 
               src="/miranda.jpeg" 
               alt="Paola Miranda Arquitecta" 
-              className="h-26 w-auto md:h-26 transition-transform duration-300 hover:scale-105 border-none"
+              className="h-26 w-auto md:h-26 transition-transform duration-300 border-none"
             />
           </div>
 
@@ -220,6 +220,19 @@ const Header = () => {
                        ></span>
                 </Link>
               </li>
+              <Link
+                  to="/Login"
+                  onClick={toggleMenu}
+                  className="block text-gray-700 hover:text-gray-900 font-medium text-lg uppercase tracking-wide transition-colors duration-300 py-2 border-b border-transparent hover:border-gray-300 relative group"
+                >
+                  Iniciar Sesion
+                    <span
+                   className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300
+                     ${location.pathname === '/nosotros' ? 'w-full bg-white' : 'w-0 bg-gray-900'}
+                       group-hover:w-full group-hover:bg-gray-900`}
+                      style={{ transitionProperty: 'width, background-color' }}
+                       ></span>
+                </Link>
             </ul>
           </nav>
 

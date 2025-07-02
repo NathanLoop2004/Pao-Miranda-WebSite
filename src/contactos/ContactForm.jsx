@@ -46,7 +46,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white p-8  border-white rounded shadow-md w-full lg:w-[90%] lg:mt-4 max-w-md mx-auto">
+    <div className="bg-white p-8  border-white rounded shadow-md w-full lg:w-[90%] lg:mt-4 max-w-md mx-auto transition-all duration-300 transform hover:scale-[1.02] group"
+    style={{
+        animation: 'fadeInUp 0.6s ease-out forwards'
+      }}
+    
+    >
       <h2 className="text-2xl font-semibold mb-6 text-[#1c242c]">Contáctenos</h2>
       <form className="space-y-6" ref={formRef} onSubmit={handleSubmit}>
         {/* Tipo de consulta */}

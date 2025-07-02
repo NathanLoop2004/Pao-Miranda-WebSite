@@ -9,3 +9,31 @@
 img {
   border: none;
 }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.loader-bg {
+  position: fixed;
+  inset: 0;
+  background: #6d6e67; /* Color de fondo del logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s;
+}
+
+.loader-logo {
+  width: 180px;
+  height: 180px;
+  animation: growShrink 4s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes growShrink {
+  0% { transform: scale(1);}
+  20% { transform: scale(1.2);}
+  50% { transform: scale(0.9);}
+  80% { transform: scale(1.1);}
+  100% { transform: scale(1);}
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { autorization } from '../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 function Login() {
@@ -11,6 +11,7 @@ function Login() {
     email: '',
     password: ''
   });
+  const [error, setError] = useState(""); // <-- Estado para el error
 
   const navigate = useNavigate()
 
@@ -21,6 +22,7 @@ function Login() {
       ...prev,
       [name]: value
     }));
+    setError(""); // Limpia el error al escribir
   };
   const Email = formData.email
   const Password = formData.password
@@ -32,8 +34,9 @@ function Login() {
     try {
      const userCredentials = await signInWithEmailAndPassword(autorization, Email,Password )
       console.log("si hiciste bien pa sale aqui" + userCredentials)
-      navigate("/login/AgregarDatos")
+      navigate("/login/AgregarDatos", { replace: true });
     } catch (error) {
+      setError("Correo o contraseña incorrectos."); // <-- Mensaje de error
       console.log(`si sale mal sale esto ${error}`)
     }
   };
@@ -76,6 +79,7 @@ function Login() {
             <div className="text-center mb-8">
               <h2 className="text-2xl font-light text-stone-700 mb-2">Bienvenido</h2>
               <p className="text-stone-500 text-sm">Ingresa a tu cuenta</p>
+              
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -134,6 +138,13 @@ function Login() {
                 </div>
               </div>
 
+              {/* Mensaje de error */}
+              {error && (
+                <div className="text-red-500 text-sm text-center -mt-4 mb-2">
+                  {error}
+                </div>
+              )}
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -142,6 +153,11 @@ function Login() {
                 Iniciar Sesión
               </button>
             </form>
+
+            {/* Link to Home */}
+            <Link to="/" className="block text-center text-stone-500 text-sm mt-4 hover:underline hover:text-stone-700 transition-colors">
+              Volver al inicio
+            </Link>
           </div>
         </div>
 

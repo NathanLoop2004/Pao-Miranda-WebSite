@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Plus, X, Upload, Calendar, Tag, FileText, Image, Trash2, Loader2 } from 'lucide-react';
 import { saveProject, saveNews } from '../firebase/services';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { autorization } from '../firebase/config';
 
 const ImageUploadArea = ({ images, onImageUpload, onRemoveImage, formType }) => {
   const handleDrop = (e) => {
@@ -17,6 +20,7 @@ const ImageUploadArea = ({ images, onImageUpload, onRemoveImage, formType }) => 
     const files = e.target.files;
     if (files) {
       onImageUpload(files, formType);
+      e.target.value = ""; // <-- Limpia el input después de seleccionar
     }
   };
 
@@ -117,6 +121,7 @@ function AgregarDatos() {
     description: '',
     date: '',
     category: '',
+    area: '', // <-- Agregado aquí
     images: []
   });
   const [newsForm, setNewsForm] = useState({
@@ -124,6 +129,7 @@ function AgregarDatos() {
     description: '',
     date: '',
     category: '',
+    area: '', // <-- Agregado aquí
     images: []
   });
 
@@ -143,6 +149,14 @@ function AgregarDatos() {
     'Eventos',
     'Colaboraciones'
   ];
+
+  const navigate = useNavigate();
+
+  const handleLogoutAndGoHome = async (e) => {
+    e.preventDefault();
+    await signOut(autorization);
+    navigate("/", { replace: true });
+  };
 
   const handleImageUpload = (files, formType) => {
     const newImages = Array.from(files).map(file => ({
@@ -190,7 +204,7 @@ function AgregarDatos() {
         
         // Limpiar URLs de objeto para evitar memory leaks
         projectForm.images.forEach(img => URL.revokeObjectURL(img.preview));
-        setProjectForm({ title: '', description: '', date: '', category: '', images: [] });
+        setProjectForm({ title: '', description: '', date: '', category: '', area: '', images: [] });
         setIsProjectModalOpen(false);
       } else {
         alert(`Error al guardar el proyecto: ${result.error}`);
@@ -215,7 +229,7 @@ function AgregarDatos() {
         
         // Limpiar URLs de objeto para evitar memory leaks
         newsForm.images.forEach(img => URL.revokeObjectURL(img.preview));
-        setNewsForm({ title: '', description: '', date: '', category: '', images: [] });
+        setNewsForm({ title: '', description: '', date: '', category: '', area: '', images: [] });
         setIsNewsModalOpen(false);
       } else {
         alert(`Error al guardar la noticia: ${result.error}`);
@@ -378,6 +392,22 @@ function AgregarDatos() {
 
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-2">
+              Área (m²)
+            </label>
+            <input
+              type="number"
+              min="0"
+              value={projectForm.area}
+              onChange={(e) => setProjectForm({...projectForm, area: e.target.value})}
+              className="w-full px-4 py-3 border border-stone-300 rounded-sm focus:ring-2 focus:ring-stone-500 focus:border-transparent transition-all"
+              placeholder="Ej: 2500"
+              required
+              disabled={isLoading}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-stone-700 mb-2">
               <Image size={16} className="inline mr-2" />
               Imágenes del Proyecto
             </label>
@@ -484,6 +514,22 @@ function AgregarDatos() {
 
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-2">
+              Área (m²)
+            </label>
+            <input
+              type="number"
+              min="0"
+              value={newsForm.area}
+              onChange={(e) => setNewsForm({...newsForm, area: e.target.value})}
+              className="w-full px-4 py-3 border border-stone-300 rounded-sm focus:ring-2 focus:ring-stone-500 focus:border-transparent transition-all"
+              placeholder="Ej: 2500"
+              required
+              disabled={isLoading}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-stone-700 mb-2">
               <Image size={16} className="inline mr-2" />
               Imágenes de la Noticia
             </label>
@@ -515,6 +561,17 @@ function AgregarDatos() {
           </div>
         </form>
       </Modal>
+
+      {/* Párrafo para regresar al inicio */}
+      <p className="text-center mt-8 mb-4">
+        <a
+          href="/"
+          onClick={handleLogoutAndGoHome}
+          className="text-stone-600 hover:text-stone-900 underline transition-colors"
+        >
+          Regresar al inicio
+        </a>
+      </p>
     </div>
   );
 }

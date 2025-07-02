@@ -45,6 +45,7 @@ export const saveProject = async (projectData) => {
       description: projectData.description,
       date: projectData.date,
       category: projectData.category,
+      area: projectData.area, // <-- Agregado aquí
       images: imageUrls,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
@@ -81,6 +82,7 @@ export const saveNews = async (newsData) => {
       description: newsData.description,
       date: newsData.date,
       category: newsData.category,
+      area: newsData.area, // <-- Agregado aquí
       images: imageUrls,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()

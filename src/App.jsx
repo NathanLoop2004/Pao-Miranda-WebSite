@@ -7,20 +7,40 @@ import Noticias from './noticias/Noticias'
 import Nosotros from './nosotros/Nosotros'
 import Login from './Login/Login'
 import AgregarDatos from './AgregarDatos/AgregarDatos'
+import Proyectos from './proyectos/Proyectos'
+import React, { useEffect, useState } from 'react';
+import Loader from './Components/Loader';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
-
  const location = useLocation();
+ const [loading, setLoading] = useState(true);
+
+ useEffect(() => {
+   setLoading(true);
+   const timer = setTimeout(() => setLoading(false), 4000); // 4 segundos
+   return () => clearTimeout(timer);
+ }, [location.pathname]);
+
  const hideLayout =
   location.pathname === "/login" ||
   location.pathname === "/login/AgregarDatos";
 
 
+  if (loading) return <Loader />;
+
   return (
     <>
     <Routes>
      <Route path='/login' element={<Login/>}/>
-     <Route path='/login/AgregarDatos' element={<AgregarDatos/>} />
+     <Route
+          path='/login/AgregarDatos'
+          element={
+            <ProtectedRoute>
+              <AgregarDatos />
+            </ProtectedRoute>
+          }
+        />
      <Route path="/" element={
     <>
       {!hideLayout && <Header />}
@@ -39,11 +59,20 @@ function App() {
       {!hideLayout && <Footer />}
     </>
   }/>
-  <Route path='/noticias' element={
+    <Route path="/noticias" element={
     <>
       {!hideLayout && <Header />}
       <main className="flex-1 overflow-x-hidden">
         <Noticias />
+      </main>
+      {!hideLayout && <Footer />}
+    </>
+  }/>
+  <Route path="/proyectos" element={
+    <>
+      {!hideLayout && <Header />}
+      <main className="flex-1 overflow-x-hidden">
+        <Proyectos />
       </main>
       {!hideLayout && <Footer />}
     </>
