@@ -11,6 +11,8 @@ import Proyectos from './proyectos/Proyectos'
 import React, { useEffect, useState } from 'react';
 import Loader from './Components/Loader';
 import ProtectedRoute from './ProtectedRoute';
+import Inicio from './Inicio/Inicio'
+import ProyectoDetalle from './proyectos/ProyectoDetalle';
 
 function App() {
  const location = useLocation();
@@ -45,7 +47,7 @@ function App() {
     <>
       {!hideLayout && <Header />}
       <main className="flex-1 overflow-x-hidden">
-        {/* Aquí puedes usar un componente Home si tienes */}
+        <Inicio/>
       </main>
       {!hideLayout && <Footer />}
     </>
@@ -77,6 +79,16 @@ function App() {
       {!hideLayout && <Footer />}
     </>
   }/>
+  <Route path="/proyectos/:id" element={
+    <>
+      {!hideLayout && <Header />}
+      <main className="flex-1 overflow-x-hidden">
+        <ProyectoDetalle />
+      </main>
+      {!hideLayout && <Footer />}
+    </>
+  }/>
+  
   <Route path='/nosotros' element={
     <>
       {!hideLayout && <Header />}

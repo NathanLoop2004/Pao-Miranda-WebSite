@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { MapPin, Calendar, Building, Users, Award, Briefcase, FileText } from 'lucide-react';
-import ProyectoCard from './ProyectoCard'; // Ajusta la ruta si es necesario
+import InicioCards from '../Inicio/InicioCards'; // Agrega esta línea
 
 const categories = [
   { id: 'todos', label: 'Todos', icon: null }, // <-- Botón de todos
@@ -88,7 +88,7 @@ export default function Proyectos() {
         {/* Grid de proyectos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProyectos.map((project) => (
-            <ProyectoCard key={project.id} project={project} />
+            <InicioCards key={project.id} project={project} />
           ))}
         </div>
 
