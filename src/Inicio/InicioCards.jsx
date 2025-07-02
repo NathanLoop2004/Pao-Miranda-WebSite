@@ -3,7 +3,7 @@ import { ExternalLink, Ruler } from 'lucide-react';
 
 export default function InicioCards({ project }) {
   return (
-    <div className="group relative bg-transparent rounded-2xl overflow-hidden flex flex-col w-full h-72 transition-all duration-700 hover:scale-[1.02] animate-fadeInUp">
+    <div className="group relative bg-transparent rounded-2xl overflow-hidden flex flex-col w-full h-full transition-all duration-700 hover:scale-[1.02] animate-fadeInUp">
       {/* Imagen de fondo completa */}
       {project.images && project.images.length > 0 && (
         <div className="absolute inset-0 w-full h-full">

@@ -37,6 +37,9 @@ export default function Inicio() {
             <div className="bg-black/70 absolute w-full h-full"></div>
           </div>
 
+
+
+
           {/* itera solo 7 imágenes */}
           {imagenes.slice(0, 7).map((img, idx) => (
             <InicioCards key={img.id || idx} project={img} />
