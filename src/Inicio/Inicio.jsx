@@ -32,7 +32,7 @@ export default function Inicio() {
           "
         >
           {/* Mantén el orden y los spans */}
-          <div className="bg-white row-span-1 col-span-1 md:row-span-2 md:col-span-2 w-full md:h-full relative animate-fadeInUp transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300">
+          <div className="bg-white row-span-1 rounded-[15px] col-span-1 md:row-span-2 md:col-span-2 w-full md:h-full relative animate-fadeInUp transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300">
             <img src="/FondoModerno.png" className="w-full h-full absolute" />
             <div className="bg-black/70 absolute w-full h-full"></div>
           </div>
