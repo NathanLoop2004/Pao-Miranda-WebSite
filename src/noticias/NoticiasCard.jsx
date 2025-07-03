@@ -1,4 +1,5 @@
 import { Calendar, Tag, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom'; // Agrega esto
 
 export default function NoticiasCard({ project }) {
   return (
@@ -63,8 +64,11 @@ export default function NoticiasCard({ project }) {
 
         {/* Botón con liquid glass responsive */}
         <div className="mt-1.5 sm:mt-2">
-          <button className="group/btn relative block w-full overflow-hidden rounded-lg sm:rounded-xl 
-                       transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]">
+          <Link
+            to={`/noticias/${project.id}`}
+            className="group/btn relative block w-full overflow-hidden rounded-lg sm:rounded-xl 
+                       transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
+          >
             {/* Fondo glass del botón */}
             <div className="absolute inset-0 bg-white/15 backdrop-blur-lg border border-white/25 rounded-lg sm:rounded-xl shadow-lg"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-lg sm:rounded-xl opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
@@ -86,7 +90,7 @@ export default function NoticiasCard({ project }) {
                 strokeWidth={2} 
               />
             </div>
-          </button>
+          </Link>
         </div>
       </div>
 

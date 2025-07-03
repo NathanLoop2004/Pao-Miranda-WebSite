@@ -13,6 +13,7 @@ import Loader from './Components/Loader';
 import ProtectedRoute from './ProtectedRoute';
 import Inicio from './Inicio/Inicio'
 import ProyectoDetalle from './proyectos/ProyectoDetalle';
+import NoticiasCardClick from './noticias/NoticiasDetalle'
 
 function App() {
  const location = useLocation();
@@ -70,6 +71,16 @@ function App() {
       {!hideLayout && <Footer />}
     </>
   }/>
+ <Route path="/noticias/:id" element={
+    <>
+      {!hideLayout && <Header />}
+      <main className="flex-1 overflow-x-hidden">
+        <NoticiasCardClick />
+      </main>
+      {!hideLayout && <Footer />}
+    </>
+  }/>
+
   <Route path="/proyectos" element={
     <>
       {!hideLayout && <Header />}
