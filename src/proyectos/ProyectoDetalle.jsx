@@ -162,6 +162,7 @@ export default function ProyectoDetalle() {
                               ? 'bg-white border-white/50 shadow-lg' 
                               : 'bg-white/40 border-white/30 hover:bg-white/60'
                           }`}></div>
+                          
                         </button>
                       ))}
                     </div>
