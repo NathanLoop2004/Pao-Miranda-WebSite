@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
@@ -56,7 +56,10 @@ export default function ProyectoDetalle() {
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <button className="group/back relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105">
+          <Link
+            to="/"
+            className="group/back relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105"
+          >
             {/* Glass background */}
             <div className="absolute inset-0 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/8 to-white/15 rounded-xl opacity-0 group-hover/back:opacity-100 transition-opacity duration-300"></div>
@@ -66,7 +69,7 @@ export default function ProyectoDetalle() {
               <ArrowLeft className="w-4 h-4 text-white/90 transition-transform duration-300 group-hover/back:-translate-x-1" strokeWidth={2} />
               <span className="text-white/90 font-medium text-sm">Volver</span>
             </div>
-          </button>
+          </Link>
         </div>
       </div>
 
