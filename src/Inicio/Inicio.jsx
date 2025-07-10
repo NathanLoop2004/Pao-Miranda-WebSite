@@ -159,6 +159,7 @@ export default function Inicio() {
 
                   {/* Call to action principal - RESPONSIVE */}
                   <div className="relative mt-3 sm:mt-4">
+                    <Link to="/proyectos">
                     <div className="relative group/cta">
                       {/* Glass background del CTA */}
                       <div className="absolute inset-0 bg-white/20 backdrop-blur-lg rounded-lg sm:rounded-xl border border-white/30 shadow-xl group-hover/cta:bg-white/25 transition-all duration-300"></div>
@@ -178,10 +179,11 @@ export default function Inicio() {
                         <ArrowRight 
                           className="w-4 h-4 sm:w-5 sm:h-5 text-white transition-transform duration-300 
                                     group-hover/cta:translate-x-2 group-hover/cta:-translate-y-1 drop-shadow-lg" 
-                          strokeWidth={2} 
+                                    strokeWidth={2} 
                         />
                       </div>
                     </div>
+                                    </Link>
                   </div>
 
                   {/* Decoración con sparkles - RESPONSIVE */}

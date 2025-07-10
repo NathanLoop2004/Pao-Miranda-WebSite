@@ -12,7 +12,7 @@ export default function Contact() {
           style={{ animation: 'fadeInUp 0.6s ease-out forwards' }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24268.77048735383!2d-57.63140488559548!3d-25.28490142429445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da7f2358d412f%3A0x4ad538d9d71078e!2sPante%C3%B3n%20Nacional%20de%20los%20H%C3%A9roes%20y%20Oratorio%20a%20Nuestra%20Se%C3%B1ora%20Santa%20Mar%C3%ADa%20de%20la%20Asunci%C3%B3n!5e0!3m2!1ses-419!2spy!4v1750947407387!5m2!1ses-419!2spy"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12089.578906964416!2d-57.510103506160796!3d-25.25886206919739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da5788611f7f5%3A0xe7a89200fd1dd727!2sConfortec%20S.R.L!5e1!3m2!1ses-419!2spy!4v1751996501017!5m2!1ses-419!2spy"
             className='w-[100%] h-[55%] lg:h-[70%]'
             style={{ border: 0 }}
             allowFullScreen
