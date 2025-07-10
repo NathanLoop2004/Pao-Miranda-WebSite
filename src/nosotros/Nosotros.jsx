@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { User, Award, Building, Heart, Star, Briefcase } from 'lucide-react';
-
+import { Link } from "react-router-dom";
 export default function Nosotros() {
   const [hovered, setHovered] = useState(false);
 
@@ -276,7 +276,8 @@ export default function Nosotros() {
             </div>
 
             {/* Call to action con glass */}
-            <div className="mt-8 sm:mt-12 text-center">
+            <div className="mt-8 sm:mt-12 text-center hover:scale-[1.05] transition-all duration-700">
+              <Link to="/contacto">
               <div className="relative inline-block">
                 <div className="absolute inset-0 bg-white/15 backdrop-blur-lg rounded-2xl border border-white/25 shadow-xl"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-2xl"></div>
@@ -287,6 +288,7 @@ export default function Nosotros() {
                   </p>
                 </div>
               </div>
+              </Link>
             </div>
           </div>
         </div>
